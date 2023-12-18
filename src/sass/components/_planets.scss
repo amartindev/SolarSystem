@@ -1,0 +1,18 @@
+.container-planet {
+
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: -10;
+
+    img {
+        max-width: 100%;
+        max-height: 100%;
+        
+    }
+}
