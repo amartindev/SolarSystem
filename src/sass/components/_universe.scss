@@ -1,0 +1,56 @@
+.container_solaris {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 40vh;
+    overflow: hidden;
+    align-content: start;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 5rem;
+}
+
+.title {
+    text-align: center;
+    font-size: 4rem;
+    margin-bottom: 0;
+}
+
+.container_planet {
+    width: 12.5%;
+    height: auto;
+
+    img {
+        width: 100%;
+        object-fit: contain;
+        padding: 0 2rem;
+
+        &:hover {
+            transform: scale(1.5);
+            transition: all 1.5s ease-out;
+            cursor: url('/src/assets/rocket_landing.png'), auto;
+        }
+    }
+}
+
+.planet-name {
+    text-align: center;
+}
+
+.sun_universe {
+    position: absolute;
+    z-index: -1;
+    top: -45rem;
+    left: -117rem;
+}
+
+.container_buttons {
+
+    display: flex;
+    justify-content: center;
+    padding-top: 5rem;
+    button {
+        width: 12rem;
+        margin: 0 5rem;
+    }
+}
