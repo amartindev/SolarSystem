@@ -24,17 +24,25 @@
         width: 100%;
         object-fit: contain;
         padding: 0 2rem;
-
+        transition: all 1.5s ease-out;
         &:hover {
             transform: scale(1.5);
-            transition: all 1.5s ease-out;
+            
             cursor: url('/src/assets/rocket_landing.png'), auto;
         }
     }
 }
 
-.planet-name {
-    text-align: center;
+.planet_name {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+ h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
 }
 
 .sun_universe {
@@ -45,12 +53,48 @@
 }
 
 .container_buttons {
-
     display: flex;
     justify-content: center;
     padding-top: 5rem;
+
     button {
         width: 12rem;
+         height: 3rem;
         margin: 0 5rem;
+        background: rgba(255, 255, 255, 0.04);
+        border-radius:16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(1.1px);
+        -webkit-backdrop-filter: blur(1.1px);
+        transition: transform 0.5s ease-out;
     }
+
+    &.active {
+        button {
+            transform: translateY(20px); 
+        }
+    }
+
 }
+
+
+
+
+/* Transitions */
+
+// .fade-enter{
+//     opacity: 0;
+//  }
+//  .fade-exit{
+//     opacity: 1;
+//  }
+//  .fade-enter-active{
+//     opacity: 1;
+//  }
+//  .fade-exit-active{
+//     opacity: 0;
+//  }
+//  .fade-enter-active,
+//  .fade-exit-active{
+//     transition: opacity 500ms;
+//  }
