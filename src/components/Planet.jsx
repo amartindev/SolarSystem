@@ -1,9 +1,10 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink } from "react-router-dom";
 
 export const Planet = ({ planet, onMouseEnter, onMouseLeave }) => {
     if (!planet) {
         return <div className="tarjeta">Cargando...</div>;
     }
+
 
     return (
         <div
@@ -11,7 +12,10 @@ export const Planet = ({ planet, onMouseEnter, onMouseLeave }) => {
             onMouseEnter={onMouseEnter}
             onMouseLeave={onMouseLeave}
         >
-            <NavLink to={`/planet`} activeClassName="active-link">
+            <NavLink
+                to={`/planet/${planet.id}`}
+                activeClassName="active-link"
+            >
                 <img src={`../src/assets/${planet.englishName}.png`} alt="" />
             </NavLink>
         </div>

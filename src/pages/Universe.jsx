@@ -1,6 +1,8 @@
 import { useContext, useState, useEffect } from "react";
 import { BodiesContext } from "../context/BodiesContext";
 import { Planet } from "../components/Planet";
+import SortedPlanets from "../components/SortedPlanets";
+import { ShootingStar } from "../components/ShootingStar";
 // import { CSSTransition, SwitchTransition } from "react-transition-group";
 
 export const Universe = () => {
@@ -10,13 +12,7 @@ export const Universe = () => {
     const { bodies } = useContext(BodiesContext);
 
     useEffect(() => {
-        const planetsFilter = (bodies.bodies || []).filter(
-            (body) => body.isPlanet === true
-        );
-        const sortedPlanets = planetsFilter.sort(
-            (a, b) => a.semimajorAxis - b.semimajorAxis
-        );
-        setPlanets(sortedPlanets);
+        setPlanets(SortedPlanets(bodies))
     }, [bodies]);
 
     const handlePlanetHover = (planet) => {
@@ -31,13 +27,7 @@ export const Universe = () => {
 
     return (
         <>
-        <div className="night">
-        <div className="shooting_star"></div>
-        <div className="shooting_star"></div>
-        <div className="shooting_star"></div>
-        <div className="shooting_star"></div>
-        <div className="shooting_star"></div>
-        </div>
+        <ShootingStar number={5}></ShootingStar>
             <img
                 className="sun_universe"
                 src="../src/assets/sun_sf.png"
@@ -84,23 +74,4 @@ export const Universe = () => {
     );
 };
 
-// const [currentPlanetIndex, setCurrentPlanetIndex] = useState(0);
 
-// const decreasePosition = () => {
-//     if (currentPlanetIndex === 0) {
-//     setCurrentPlanetIndex(planets.length - 1);
-//     } else {
-//     setCurrentPlanetIndex(currentPlanetIndex - 1);
-//     }
-// };
-
-// const increasePosition = () => {
-//     if (planets.length - 1 === currentPlanetIndex) {
-//     setCurrentPlanetIndex(0);
-//     } else {
-//     setCurrentPlanetIndex(currentPlanetIndex + 1);
-//     }
-// };
-
-// <button className="prev" onClick={decreasePosition}>Anterior</button>
-// <button className="next" onClick={increasePosition}>Siguiente</button>

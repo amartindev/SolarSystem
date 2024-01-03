@@ -1,12 +1,13 @@
-html, body {
+html,
+body {
     height: 100%;
     margin: 0;
     padding: 0;
-    cursor: url('/src/assets/rocket.png'), auto;
+    cursor: url("/src/assets/rocket.png"), auto;
 }
 
 body {
-    background-image: url('../../../src/assets/universe.jpeg');
+    background-image: url("../../../src/assets/universe.jpeg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -15,4 +16,15 @@ body {
     overflow: hidden;
     color: #fff;
     font-family: $font-family;
+}
+
+button {
+    width: 12rem;
+    height: 3rem;
+    margin: 0 5rem;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(1.1px);
+    -webkit-backdrop-filter: blur(1.1px);
 }

@@ -15,8 +15,9 @@ export const App = () => {
                         <Route path="/" element={<Universe></Universe>}></Route>
                         <Route
                             path="/planet"
-                            element={<DetailPlanet></DetailPlanet>}
+                            element={<Universe></Universe>}
                         ></Route>
+                        <Route path="/planet/:id" element={<DetailPlanet></DetailPlanet>} />
                         <Route path="/*" element={<Navigate to="/" />}></Route>
                     </Routes>
                 </div>
