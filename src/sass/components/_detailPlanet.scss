@@ -1,0 +1,68 @@
+.container_detail-planet {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    .container_image_planet_detail {
+        position: absolute;
+        top: 0;
+        z-index: -1;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        max-height: 100hv;
+        img {
+            position: fixed;
+            height: 90%;
+            top: 2.5rem;
+        }
+    }
+
+    .container_description_info_detail_planet {
+        width: 100%;
+        .container_info_detail_planet,
+        .container_description_detail_planet {
+            width: 20%;
+            position: fixed;
+            top: 10rem;
+            min-height: 25rem;
+            background: rgba(255, 255, 255, 0.04);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(1.1px);
+            -webkit-backdrop-filter: blur(1.1px);
+            border: 1px solid rgba(255, 255, 255, 0.24);
+
+            p {
+                margin: 2rem;
+            }
+        }
+        .container_info_detail_planet {
+            border-radius: 0 16px 16px 0;
+            left: 0;
+        }
+        .container_description_detail_planet {
+            border-radius: 16px 0 0 16px;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            right: 0;
+        }
+
+        .title_planet {
+            font-size: 3rem;
+        }
+    }
+    .container_buttons {
+        padding-top: 0;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        padding-bottom: 2rem;
+    }
+    .button_moons {
+        position: absolute;
+        bottom: 5rem;
+        margin-left: 2rem;
+        margin-bottom: 5rem;
+    }
+}

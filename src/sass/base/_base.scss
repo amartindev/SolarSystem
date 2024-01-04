@@ -5,7 +5,9 @@ body {
     padding: 0;
     cursor: url("/src/assets/rocket.png"), auto;
 }
-
+#root {
+    height: 100%;
+}
 body {
     background-image: url("../../../src/assets/universe.jpeg");
     background-size: cover;
@@ -16,6 +18,7 @@ body {
     overflow: hidden;
     color: #fff;
     font-family: $font-family;
+    font-size: 1.1rem;
 }
 
 button {
