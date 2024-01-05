@@ -4,11 +4,13 @@ import { useNavigate, useParams } from "react-router-dom";
 import SortedPlanets from "../components/SortedPlanets";
 import data from "../data/descriptionPlanets.json";
 import { ShootingStar } from "../components/ShootingStar";
+import anime from "animejs";
 
 export const DetailPlanet = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const { bodies } = useContext(BodiesContext);
+
     const [planets, setPlanets] = useState([]);
     const [currentPlanetIndex, setCurrentPlanetIndex] = useState(0);
 
@@ -46,49 +48,96 @@ export const DetailPlanet = () => {
         navigate(`/planet/${newPlanet.id}`);
     };
 
-    function formatPlanetSize(vol) {
-        if (vol) {
-            return `${vol.volValue} x 10^${vol.volExponent} km³`;
-        }
-        return "N/A";
-    }
+    const formatPlanetSize = (vol) => {
+        return vol ? ` x 10^${vol.volExponent} km³` : "N/A";
+    };
 
     const currentPlanet = planets[currentPlanetIndex];
+
+    const roundLogEl = document.querySelector(".round-log");
+    const roundLogMoonsEl = document.querySelector(".round-moon");
+    const roundLogSizeEl = document.querySelector(".round-size");
+
+    useEffect(() => {
+        anime({
+            targets: roundLogEl,
+            innerHTML: [
+                0,
+                currentPlanet ? currentPlanet.gravity : "loading...",
+            ],
+            easing: "linear",
+            round: 10,
+        });
+        anime({
+            targets: roundLogMoonsEl,
+            innerHTML: [
+                0,
+                currentPlanet
+                    ? currentPlanet.moons
+                        ? currentPlanet.moons.length
+                        : 0
+                    : "Loading...",
+            ],
+            easing: "linear",
+            round: 1,
+        });
+        anime({
+            targets: roundLogSizeEl,
+            innerHTML: [
+                0,
+                currentPlanet ? currentPlanet.vol.volValue : "loading...",
+            ],
+            easing: "linear",
+            round: 1000,
+        });
+        anime({
+            targets: '.spring-physics .eldetail',
+            translateX: ['-100%', 0],
+            direction: 'alternate',
+            autoplay: true,
+            loop: false,
+            easing: 'spring(1, 80, 10, 0)'
+          })
+        anime({
+            targets: ".staggering-direction .el",
+            translateX: ['-100%', 0],
+            delay: anime.stagger(300, {easing: 'easeOutQuad'})
+        });
+        anime({
+            targets: '.spring-physics .eldescription',
+            translateX: ['100%', 0],
+            direction: 'alternate',
+            autoplay: true,
+            loop: false,
+            easing: 'spring(1, 80, 10, 0)'
+          })
+    }, [currentPlanet]);
 
     return (
         <>
             <ShootingStar number={5}></ShootingStar>
             <div className="container_detail-planet">
-                <div className="container_description_info_detail_planet">
-                    <div className="container_info_detail_planet">
-                        <p className="title_planet">
+                <div className="container_description_info_detail_planet spring-physics">
+                    <div className="container_info_detail_planet staggering-direction eldetail">
+                        <p className="title_planet el">
                             {currentPlanet
                                 ? currentPlanet.englishName
                                 : "Loading..."}
                         </p>
-                        <p>
-                            Moons:{" "}
-                            {currentPlanet
-                                ? currentPlanet.moons
-                                    ? currentPlanet.moons.length
-                                    : 0
-                                : "Loading..."}
+                        <p className="el">
+                            Moons: <span className="round-moon el"></span>
                         </p>
-                        <p>
-                            Gravity:{" "}
-                            {currentPlanet
-                                ? currentPlanet.gravity
-                                : "Loading..."}
-                            m/s²
+                        <p className="el">
+                            Gravity: <span className="round-log"></span> m/s²
                         </p>
-                        <p>
-                            Size:{" "}
+                        <p className="el">
+                            Size: <span className="round-siz"></span>{" "}
                             {currentPlanet
                                 ? formatPlanetSize(currentPlanet.vol)
                                 : "Loading..."}
                         </p>
                     </div>
-                    <div className="container_description_detail_planet">
+                    <div className="container_description_detail_planet eldescription">
                         <p>
                             Description:{" "}
                             {data.planets
@@ -109,15 +158,14 @@ export const DetailPlanet = () => {
                     )}
                 </div>
 
-                {currentPlanet ? (
-                    currentPlanet.moons ? (
-                        currentPlanet.moons.length > 0 ? (
-                            <button className="btn btn-outline-light button_moons">
-                                Moons
-                            </button>
-                        ) : null
-                    ) : null
-                ) : null}
+                {currentPlanet &&
+                    currentPlanet.moons &&
+                    currentPlanet.moons.length > 0 && (
+                        <button className="btn btn-outline-light button_moons">
+                            Moons
+                        </button>
+                    )}
+
                 <div className="container_buttons">
                     <button
                         className="prev btn btn-outline-light"
