@@ -4,15 +4,18 @@ import { useNavigate, useParams } from "react-router-dom";
 import SortedPlanets from "../components/SortedPlanets";
 import data from "../data/descriptionPlanets.json";
 import { ShootingStar } from "../components/ShootingStar";
+import Letters from "../components/Letters";
+
 import anime from "animejs";
 
 export const DetailPlanet = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const { bodies } = useContext(BodiesContext);
-
     const [planets, setPlanets] = useState([]);
     const [currentPlanetIndex, setCurrentPlanetIndex] = useState(0);
+    const [animateLetters, setAnimateLetters] = useState(false);
+    const [description, setDescription] = useState()
 
     useEffect(() => {
         setPlanets(SortedPlanets(bodies));
@@ -60,15 +63,6 @@ export const DetailPlanet = () => {
 
     useEffect(() => {
         anime({
-            targets: roundLogEl,
-            innerHTML: [
-                0,
-                currentPlanet ? currentPlanet.gravity : "loading...",
-            ],
-            easing: "linear",
-            round: 10,
-        });
-        anime({
             targets: roundLogMoonsEl,
             innerHTML: [
                 0,
@@ -78,9 +72,21 @@ export const DetailPlanet = () => {
                         : 0
                     : "Loading...",
             ],
+            delay: 500,
             easing: "linear",
             round: 1,
         });
+        anime({
+            targets: roundLogEl,
+            innerHTML: [
+                0,
+                currentPlanet ? currentPlanet.gravity : "loading...",
+            ],
+            easing: "linear",
+            delay: 1000,
+            round: 10,
+        });
+
         anime({
             targets: roundLogSizeEl,
             innerHTML: [
@@ -88,31 +94,40 @@ export const DetailPlanet = () => {
                 currentPlanet ? currentPlanet.vol.volValue : "loading...",
             ],
             easing: "linear",
+            delay: 1500,
             round: 1000,
         });
         anime({
-            targets: '.spring-physics .eldetail',
-            translateX: ['-100%', 0],
-            direction: 'alternate',
+            targets: ".spring-physics .eldetail",
+            translateX: ["-100%", 0],
+            direction: "alternate",
             autoplay: true,
             loop: false,
-            easing: 'spring(1, 80, 10, 0)'
-          })
-        anime({
-            targets: ".staggering-direction .el",
-            translateX: ['-100%', 0],
-            delay: anime.stagger(300, {easing: 'easeOutQuad'})
+            easing: "spring(1, 80, 10, 0)",
         });
         anime({
-            targets: '.spring-physics .eldescription',
-            translateX: ['100%', 0],
-            direction: 'alternate',
+            targets: ".staggering-direction .el",
+            translateX: ["-100%", 0],
+            delay: anime.stagger(300, { easing: "easeOutQuad" }),
+        });
+        anime({
+            targets: ".spring-physics .eldescription",
+            translateX: ["100%", 0],
+            direction: "alternate",
             autoplay: true,
             loop: false,
-            easing: 'spring(1, 80, 10, 0)'
-          })
-    }, [currentPlanet]);
+            easing: "spring(1, 80, 10, 0)",
+        });
 
+        if (currentPlanet && data.planets[currentPlanetIndex].description) {
+            setAnimateLetters(true);
+            setDescription(data.planets[currentPlanetIndex].description);
+          } else {
+            setAnimateLetters(false);
+          }
+
+    }, [currentPlanet]);
+    
     return (
         <>
             <ShootingStar number={5}></ShootingStar>
@@ -131,19 +146,14 @@ export const DetailPlanet = () => {
                             Gravity: <span className="round-log"></span> m/s²
                         </p>
                         <p className="el">
-                            Size: <span className="round-siz"></span>{" "}
+                            Size: <span className="round-size"></span>{" "}
                             {currentPlanet
                                 ? formatPlanetSize(currentPlanet.vol)
                                 : "Loading..."}
                         </p>
                     </div>
                     <div className="container_description_detail_planet eldescription">
-                        <p>
-                            Description:{" "}
-                            {data.planets
-                                ? data.planets[currentPlanetIndex].description
-                                : "Loading..."}
-                        </p>
+                    <Letters playAnimation={animateLetters} description={description} />
                     </div>
                 </div>
 
