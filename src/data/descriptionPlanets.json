@@ -32,5 +32,11 @@
       "id": "neptune",
       "description": "Neptune, the eighth and farthest known planet from the Sun, is a gas giant with a deep blue color. It has powerful winds and a dynamic atmosphere, featuring dark storms and a notable dark spot. Neptune has a system of rings and a diverse family of moons."
     }
+  ],
+  "sun" :[
+    {
+      "id": "sun",
+      "description":"The Sun is a blazing, star-sized sphere of hot, ionized gases at the center of our solar system. Composed mainly of hydrogen and helium, it produces light and heat through nuclear fusion. Its gravity keeps planets in orbit, and its energy sustains life on Earth. The Sun is about 4.6 billion years old and will likely shine for billions more years."
+    }
   ]
 }

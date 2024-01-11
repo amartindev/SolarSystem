@@ -5,10 +5,7 @@ export const NavBar = () => {
         <nav className="navbar navbar-expand-lg">
             <div className="container-fluid">
                 <NavLink to="/" className="navbar-brand" href="#">
-                    <span>
-                    Solar System
-                    </span>
-
+                    <span>Solar System</span>
                 </NavLink>
                 <button
                     className="navbar-toggler"
@@ -33,10 +30,17 @@ export const NavBar = () => {
                                 aria-current="page"
                                 href="#"
                             >
-                                <span>
-                                    Home
-                                </span>
-
+                                <span>Planets</span>
+                            </NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink
+                                to="/sun"
+                                className="nav-link active"
+                                aria-current="page"
+                                href="#"
+                            >
+                                <span>Sun</span>
                             </NavLink>
                         </li>
                     </ul>

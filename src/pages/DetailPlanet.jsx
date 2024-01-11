@@ -1,9 +1,8 @@
 import { useContext, useState, useEffect } from "react";
 import { BodiesContext } from "../context/BodiesContext";
-import { useNavigate, useParams } from "react-router-dom";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
 import SortedPlanets from "../components/SortedPlanets";
 import data from "../data/descriptionPlanets.json";
-import { ShootingStar } from "../components/ShootingStar";
 import Letters from "../components/Letters";
 
 import anime from "animejs";
@@ -15,10 +14,10 @@ export const DetailPlanet = () => {
     const [planets, setPlanets] = useState([]);
     const [currentPlanetIndex, setCurrentPlanetIndex] = useState(0);
     const [animateLetters, setAnimateLetters] = useState(false);
-    const [description, setDescription] = useState()
+    const [description, setDescription] = useState();
 
     useEffect(() => {
-        setPlanets(SortedPlanets(bodies));
+        setPlanets(SortedPlanets(bodies, "planet"));
     }, [bodies]);
 
     useEffect(() => {
@@ -118,20 +117,26 @@ export const DetailPlanet = () => {
             loop: false,
             easing: "spring(1, 80, 10, 0)",
         });
+        anime({
+            targets: ".spring-physics .elbuttons",
+            translateY: [800, 0],
+            direction: "alternate",
+            autoplay: true,
+            loop: false,
+            easing: "spring(1, 80, 10, 0)",
+        });
 
         if (currentPlanet && data.planets[currentPlanetIndex].description) {
             setAnimateLetters(true);
             setDescription(data.planets[currentPlanetIndex].description);
-          } else {
+        } else {
             setAnimateLetters(false);
-          }
-
+        }
     }, [currentPlanet]);
-    
+
     return (
         <>
-            <ShootingStar number={5}></ShootingStar>
-            <div className="container_detail-planet">
+            <div className="container_detail-planet spring-physics">
                 <div className="container_description_info_detail_planet spring-physics">
                     <div className="container_info_detail_planet staggering-direction eldetail">
                         <p className="title_planet el">
@@ -151,9 +156,18 @@ export const DetailPlanet = () => {
                                 ? formatPlanetSize(currentPlanet.vol)
                                 : "Loading..."}
                         </p>
+                        <p className="el">
+                            Type:{" "}
+                            {currentPlanet
+                                ? currentPlanet.bodyType
+                                : "Loading..."}
+                        </p>
                     </div>
                     <div className="container_description_detail_planet eldescription">
-                    <Letters playAnimation={animateLetters} description={description} />
+                        <Letters
+                            playAnimation={animateLetters}
+                            description={description}
+                        />
                     </div>
                 </div>
 
@@ -167,24 +181,32 @@ export const DetailPlanet = () => {
                         "loading..."
                     )}
                 </div>
-
                 {currentPlanet &&
                     currentPlanet.moons &&
                     currentPlanet.moons.length > 0 && (
-                        <button className="btn btn-outline-light button_moons">
-                            Moons
-                        </button>
+                        <>
+                            <NavLink
+                                to={`/moons?moons=${JSON.stringify(
+                                    currentPlanet.moons
+                                )}`}
+                                activeClassName="active-link"
+                            >
+                                <button className="btn btn-outline-light button_moons eldetail">
+                                    Moons
+                                </button>
+                            </NavLink>
+                        </>
                     )}
 
-                <div className="container_buttons">
+                <div className="container_buttons spring-physics">
                     <button
-                        className="prev btn btn-outline-light"
+                        className="prev btn btn-outline-light elbuttons"
                         onClick={() => navigateToPlanet(currentPlanetIndex - 1)}
                     >
                         Prev
                     </button>
                     <button
-                        className="next btn btn-outline-light"
+                        className="next btn btn-outline-light elbuttons"
                         onClick={() => navigateToPlanet(currentPlanetIndex + 1)}
                     >
                         Next

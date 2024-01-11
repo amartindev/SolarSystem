@@ -2,7 +2,9 @@ import { useContext, useState, useEffect } from "react";
 import { BodiesContext } from "../context/BodiesContext";
 import { Planet } from "../components/Planet";
 import SortedPlanets from "../components/SortedPlanets";
-import { ShootingStar } from "../components/ShootingStar";
+import { NavLink } from "react-router-dom";
+
+import anime from "animejs";
 // import { CSSTransition, SwitchTransition } from "react-transition-group";
 
 export const Universe = () => {
@@ -12,28 +14,44 @@ export const Universe = () => {
     const { bodies } = useContext(BodiesContext);
 
     useEffect(() => {
-        setPlanets(SortedPlanets(bodies))
+        setPlanets(SortedPlanets(bodies, "planet"));
     }, [bodies]);
 
     const handlePlanetHover = (planet) => {
         setHoveredPlanet(planet);
         setIsHoverActive(true);
     };
-    
+
     const handlePlanetLeave = () => {
         setHoveredPlanet(null);
         setIsHoverActive(false);
     };
+    useEffect(() => {
+        anime({
+            targets: ".range-value-staggering-sun .elsun",
+            translateX: [-150, 0],
+            translateY: [0, 50],
+            rotate: [0, 10],
+            easing: "easeInOutSine",
+        });
+        anime({
+            targets: ".range-value-staggering .elplanet",
+            translateY: [-270, 0],
+            delay: anime.stagger(100, { from: "center" }),
+        });
+    }, [planets]);
 
     return (
         <>
-        <ShootingStar number={5}></ShootingStar>
-            <img
-                className="sun_universe"
-                src="../src/assets/sun_sf.png"
-                alt=""
-            />
-            <div className="container_universe">
+            <div className="range-value-staggering-sun">
+                <img
+                    className="sun_universe elsun"
+                    src="../src/assets/sun_sf.png"
+                    alt=""
+                />
+            </div>
+
+            <div className="container_universe range-value-staggering">
                 <h1 className="title">Solar System</h1>
                 <div className="container_solaris">
                     {planets.map((planet) => (
@@ -46,32 +64,36 @@ export const Universe = () => {
                     ))}
                 </div>
                 {/* <SwitchTransition> */}
-                    {hoveredPlanet && (
-                        // <CSSTransition
-                        //     key={hoveredPlanet.englishName || "defaultKey"}
-                        //     addEndListener={(node, done) =>
-                        //         node.addEventListener(
-                        //             "transitionend",
-                        //             done,
-                        //             false
-                        //         )
-                        //     }
-                        //     classNames="fade"
-                        // >
-                            <div className="planet_name">
-                            <h2>{hoveredPlanet.englishName}</h2>
-                            </div>
-                        // </CSSTransition>
-                    )}
+                {hoveredPlanet && (
+                    // <CSSTransition
+                    //     key={hoveredPlanet.englishName || "defaultKey"}
+                    //     addEndListener={(node, done) =>
+                    //         node.addEventListener(
+                    //             "transitionend",
+                    //             done,
+                    //             false
+                    //         )
+                    //     }
+                    //     classNames="fade"
+                    // >
+                    <div className="planet_name">
+                        <h2>{hoveredPlanet.englishName}</h2>
+                    </div>
+                    // </CSSTransition>
+                )}
                 {/* </SwitchTransition> */}
             </div>
-            <div className={`container_buttons ${isHoverActive ? 'active' : ''}`}>
+            <div
+                className={`container_buttons ${isHoverActive ? "active" : ""}`}
+            >
+                <NavLink
+                to={`/sun`}
+                activeClassName="active-link"
+            >
                 <button className="btn btn-outline-light">Sun</button>
+                </NavLink>
                 <button className="btn btn-outline-light">Dwarf Planets</button>
             </div>
-            
         </>
     );
 };
-
-

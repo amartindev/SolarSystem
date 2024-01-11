@@ -8,7 +8,7 @@ export const Planet = ({ planet, onMouseEnter, onMouseLeave }) => {
 
     return (
         <div
-            className="container_planet"
+            className="container_planet elplanet"
             onMouseEnter={onMouseEnter}
             onMouseLeave={onMouseLeave}
         >
