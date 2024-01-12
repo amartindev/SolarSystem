@@ -5,7 +5,6 @@ export const Planet = ({ planet, onMouseEnter, onMouseLeave }) => {
         return <div className="tarjeta">Cargando...</div>;
     }
 
-
     return (
         <div
             className="container_planet elplanet"

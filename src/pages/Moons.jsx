@@ -8,8 +8,8 @@ export const Moons = () => {
   
     return (
       <div className="container_moons">
-        {moons.map((moon) => (
-          <MoonCard key={moon.moon} moon={moon.moon} />
+        {moons.map((moon, index) => (
+          <MoonCard key={moon.moon} moon={moon.moon} index={index} />
         ))}
       </div>
     );
