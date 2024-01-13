@@ -1,10 +1,4 @@
 const SortedPlanets = (bodies, typeBody) => {
-    // filtro de planetas enanos
-    // console.log((bodies.bodies || []).filter((body) => body.bodyType === "Dwarf Planet"))
-    // filtro de planetas
-    // console.log(
-    //     (bodies.bodies || []).filter((body) => body.englishName === "Mimas")
-    // );
 
     switch (typeBody) {
         case "planet":
@@ -15,6 +9,10 @@ const SortedPlanets = (bodies, typeBody) => {
         case "sun":
             return (bodies.bodies || []).filter(
                 (body) => body.englishName === "Sun"
+            );
+        case "Dwarf Planet":
+            return (bodies.bodies || []).filter(
+                (body) => body.bodyType === "Dwarf Planet"
             );
         default:
             return (bodies.bodies || []).filter(

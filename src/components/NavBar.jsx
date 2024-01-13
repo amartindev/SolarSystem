@@ -25,6 +25,16 @@ export const NavBar = () => {
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         <li className="nav-item">
                             <NavLink
+                                to="/sun"
+                                className="nav-link active"
+                                aria-current="page"
+                                href="#"
+                            >
+                                <span>Sun</span>
+                            </NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink
                                 to="/"
                                 className="nav-link active"
                                 aria-current="page"
@@ -35,12 +45,12 @@ export const NavBar = () => {
                         </li>
                         <li className="nav-item">
                             <NavLink
-                                to="/sun"
+                                to="/dwarfplanets"
                                 className="nav-link active"
                                 aria-current="page"
                                 href="#"
                             >
-                                <span>Sun</span>
+                                <span>Dwarf Planets</span>
                             </NavLink>
                         </li>
                     </ul>

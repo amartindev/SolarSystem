@@ -92,7 +92,12 @@ export const Universe = () => {
             >
                 <button className="btn btn-outline-light">Sun</button>
                 </NavLink>
+                <NavLink
+                to={`/dwarfplanets`}
+                activeClassName="active-link"
+            >
                 <button className="btn btn-outline-light">Dwarf Planets</button>
+                </NavLink>
             </div>
         </>
     );

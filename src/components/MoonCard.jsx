@@ -8,7 +8,7 @@ export const MoonCard = ({ moon, index }) => {
     const [lune, setLune] = useState([]);
     const roundLogElRef = useRef(null);
 
-    const moonCounter = (index % 5) + 1;
+    const moonCounter = (index % 10) + 1;
 
     useEffect(() => {
         if (moon && bodies) {
@@ -27,7 +27,7 @@ export const MoonCard = ({ moon, index }) => {
                     lune.length > 0 ? lune[0].gravity : "Loading...",
                 ],
                 easing: "linear",
-                // delay: 1000,
+                delay: 900,
                 round: 10000,
             });
         }
@@ -58,7 +58,7 @@ export const MoonCard = ({ moon, index }) => {
     }
 
     return (
-        <div className="card_moon">
+        <div className="card_moon elmoon">
             {lune.length > 0 ? (
                 <>
 
@@ -66,7 +66,7 @@ export const MoonCard = ({ moon, index }) => {
 
                     <p>{lune[0].englishName}</p>
                     <p>
-                        Gravedad:{" "}
+                    Gravity:{" "}
                         <span ref={roundLogElRef} className="round-log"></span>
                         m/s²
                     </p>
