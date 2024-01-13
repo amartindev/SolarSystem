@@ -5,6 +5,7 @@ import Letters from "../components/Letters";
 import data from "../data/descriptionPlanets.json";
 import anime from "animejs";
 import { NavLink } from "react-router-dom";
+import BackButton from "../components/BackButton";
 
 export const DetailSun = () => {
     const { bodies } = useContext(BodiesContext);
@@ -69,6 +70,7 @@ export const DetailSun = () => {
 
     return (
         <>
+                <BackButton></BackButton>
             <div className="container_detail-planet spring-physics">
                 <div className="container_description_info_detail_planet spring-physics">
                     <div className="container_info_detail_planet staggering-direction eldetail">
@@ -97,7 +99,7 @@ export const DetailSun = () => {
                 <div className="container_solei">
                     {sun ? (
                         <img
-                            src={`../src/assets/${sun.englishName}2.jpg`}
+                            src={`../assets/${sun.englishName}2.jpg`}
                             alt=""
                             className="solei_img"
                         />

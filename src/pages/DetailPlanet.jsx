@@ -4,7 +4,7 @@ import { NavLink, useNavigate, useParams } from "react-router-dom";
 import SortedPlanets from "../components/SortedPlanets";
 import data from "../data/descriptionPlanets.json";
 import Letters from "../components/Letters";
-
+import BackButton from "../components/BackButton";
 import anime from "animejs";
 
 export const DetailPlanet = () => {
@@ -136,6 +136,7 @@ export const DetailPlanet = () => {
 
     return (
         <>
+            <BackButton></BackButton>
             <div className="container_detail-planet spring-physics">
                 <div className="container_description_info_detail_planet spring-physics">
                     <div className="container_info_detail_planet staggering-direction eldetail">
@@ -174,7 +175,7 @@ export const DetailPlanet = () => {
                 <div className="container_image_planet_detail">
                     {currentPlanet ? (
                         <img
-                            src={`../src/assets/${currentPlanet.englishName}.png`}
+                            src={`../assets/${currentPlanet.englishName}.png`}
                             alt=""
                         />
                     ) : (

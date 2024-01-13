@@ -46,7 +46,7 @@ export const Universe = () => {
             <div className="range-value-staggering-sun">
                 <img
                     className="sun_universe elsun"
-                    src="../src/assets/sun_sf.png"
+                    src="../assets/sun_sf.png"
                     alt=""
                 />
             </div>

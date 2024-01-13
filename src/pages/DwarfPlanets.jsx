@@ -2,6 +2,7 @@ import SortedPlanets from "../components/SortedPlanets";
 import { useContext, useState, useEffect } from "react";
 import { BodiesContext } from "../context/BodiesContext";
 import anime from "animejs";
+import BackButton from "../components/BackButton";
 
 export const DwarfPlanets = () => {
     const { bodies } = useContext(BodiesContext);
@@ -33,12 +34,13 @@ export const DwarfPlanets = () => {
 
     return (
         <div className="container_moons staggering-grid">
+            <BackButton></BackButton>
             {dwarfPlanets.map((dwarfPlanet) => (
                 <div className="card_moon eldwarf" key={dwarfPlanet.englishName}>
                     {dwarfPlanet && Object.keys(dwarfPlanet).length > 0 ? (
                         <>
                             <img
-                                src={`../src/assets/${dwarfPlanet.id}.png`}
+                                src={`../assets/${dwarfPlanet.id}.png`}
                                 alt=""
                             />
                             <p>{dwarfPlanet.id}</p>

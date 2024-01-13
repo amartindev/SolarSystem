@@ -2,6 +2,7 @@
 import { useEffect } from 'react';
 import { MoonCard } from '../components/MoonCard';
 import anime from "animejs";
+import BackButton from '../components/BackButton';
 
 export const Moons = () => {
 
@@ -19,13 +20,9 @@ export const Moons = () => {
           });
     }, [])
     
-
-
-
-
-
     return (
       <div className="container_moons staggering-grid">
+        <BackButton></BackButton>
         {moons.map((moon, index) => (
           <MoonCard key={moon.moon} moon={moon.moon} index={index} />
         ))}

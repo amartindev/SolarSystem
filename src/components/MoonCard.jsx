@@ -39,14 +39,14 @@ export const MoonCard = ({ moon, index }) => {
     function getImageSource() {
         if (lune.length > 0) {
             const imageName = lune[0].englishName;
-            const imagePath = `../src/assets/${imageName}.png`;
-            const imagePathDefault = `../src/assets/Moon${moonCounter}.png`;
+            const imagePath = `../assets/${imageName}.png`;
+            const imagePathDefault = `../assets/Moon${moonCounter}.png`;
             const imageExists = checkImageExists(imagePath);
             return imageExists ? imagePath : imagePathDefault;
             
         } else {
             
-            return "../src/assets/Moon.png";
+            return "../assets/Moon.png";
         }
     }
 

@@ -15,7 +15,7 @@ export const Planet = ({ planet, onMouseEnter, onMouseLeave }) => {
                 to={`/planet/${planet.id}`}
                 activeClassName="active-link"
             >
-                <img src={`../src/assets/${planet.englishName}.png`} alt="" />
+                <img src={`../assets/${planet.englishName}.png`} alt="" />
             </NavLink>
         </div>
     );
