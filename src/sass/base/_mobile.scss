@@ -33,5 +33,24 @@
                 margin-top: 0;
             }
         }
+        p{
+            margin: 0 !important;
+        }
+        .container_info_detail_planet, .container_description_detail_planet{
+            padding: 2rem !important;
+        }
+
+    }
+    .letters{
+        position: absolute;
+        top: 45px;
+    }
+    .back_button, .next, .prev, .button_moons {
+        width: auto;
+        bottom: 0;
+
+    }
+    .card_moon {
+        max-height: 100% !important;
     }
 }
