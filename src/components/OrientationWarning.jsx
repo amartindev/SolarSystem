@@ -4,7 +4,7 @@ const OrientationWarning = () => {
   const checkOrientation = () => {
     const isLandscape = window.screen.orientation.type.includes('landscape');
     if (!isLandscape) {
-      alert('Por favor, gire su dispositivo para una mejor experiencia.');
+      alert('Please rotate your device for a better experience.');
     }
   };
 
