@@ -109,7 +109,7 @@ export const DetailSun = () => {
                 </div>
                 <NavLink
                 to={`/`}
-                activeClassName="active-link"
+                className="active-link"
             >
                 <button className="btn btn-outline-light button_moons eldetail">
                             Planets

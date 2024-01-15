@@ -3,7 +3,7 @@ body {
     height: 100%;
     margin: 0;
     padding: 0;
-    cursor: url("/src/assets/astronaut.png"), auto;
+    cursor: url("/assets/astronaut.png"), auto;
 }
 #root {
     height: 100%;
@@ -51,7 +51,7 @@ button {
     -webkit-backdrop-filter: blur(1.1px);
 }
 button:hover {
-    cursor: url("/src/assets/rocket.png"), pointer;
+    cursor: url("/assets/rocket.png"), pointer;
 }
 
 // Shooting Stars

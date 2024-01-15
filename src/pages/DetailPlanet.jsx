@@ -44,11 +44,14 @@ export const DetailPlanet = () => {
     const navigateToPlanet = (index) => {
         const newIndex = (index + planets.length) % planets.length;
         const newPlanet = planets[newIndex];
-
+    
         setCurrentPlanetIndex(() => newIndex);
-
-        navigate(`/planet/${newPlanet.id}`);
+    
+        if (newPlanet) {
+            navigate(`/planet/${newPlanet.id}`);
+        }
     };
+    
 
     const formatPlanetSize = (vol) => {
         return vol ? ` x 10^${vol.volExponent} km³` : "N/A";
@@ -190,7 +193,7 @@ export const DetailPlanet = () => {
                                 to={`/moons?moons=${JSON.stringify(
                                     currentPlanet.moons
                                 )}`}
-                                activeClassName="active-link"
+                                className="active-link"
                             >
                                 <button className="btn btn-outline-light button_moons eldetail">
                                     Moons

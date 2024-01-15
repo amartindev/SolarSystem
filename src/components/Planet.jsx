@@ -13,7 +13,7 @@ export const Planet = ({ planet, onMouseEnter, onMouseLeave }) => {
         >
             <NavLink
                 to={`/planet/${planet.id}`}
-                activeClassName="active-link"
+                className="active-link"
             >
                 <img src={`../assets/${planet.englishName}.png`} alt="" />
             </NavLink>

@@ -88,13 +88,13 @@ export const Universe = () => {
             >
                 <NavLink
                 to={`/sun`}
-                activeClassName="active-link"
+                className="active-link"
             >
                 <button className="btn btn-outline-light">Sun</button>
                 </NavLink>
                 <NavLink
                 to={`/dwarfplanets`}
-                activeClassName="active-link"
+                className="active-link"
             >
                 <button className="btn btn-outline-light">Dwarf Planets</button>
                 </NavLink>
