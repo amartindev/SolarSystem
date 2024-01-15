@@ -53,6 +53,26 @@ export const NavBar = () => {
                                 <span>Dwarf Planets</span>
                             </NavLink>
                         </li>
+                        <li className="nav-item">
+                            <a
+                                href="https://amartindev.github.io/"
+                                className="nav-link"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <span>Antonio Martin</span>
+                            </a>
+                        </li>
+                        <li className="nav-item inscription">
+                        <NavLink
+                                to="/inscription"
+                                className="nav-link active"
+                                aria-current="page"
+                                href="#"
+                            >
+                                <span>Inscription</span>
+                                </NavLink>
+                        </li>
                     </ul>
                 </div>
             </div>

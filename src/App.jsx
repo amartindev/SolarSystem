@@ -10,6 +10,7 @@ import { DwarfPlanets } from "./pages/DwarfPlanets"
 import  ShootingStars  from "./components/ShootingStar";
 import { NotFound } from "./pages/NotFound";
 import OrientationWarning from "./components/OrientationWarning";
+import { Inscription } from "./pages/Inscription";
 
 export const App = () => {
     return (
@@ -28,6 +29,7 @@ export const App = () => {
                         <Route path="/dwarfplanets" element={<DwarfPlanets></DwarfPlanets>}></Route>
                         {/* <Route path="/*" element={<Navigate to="/" />}></Route> */}
                         <Route path="/*" element={<NotFound />}></Route>
+                        <Route path="/inscription" element={<Inscription></Inscription>}></Route>
                     </Routes>
                 </div>
             </BodiesProvider>
