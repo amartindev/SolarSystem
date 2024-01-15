@@ -9,6 +9,7 @@ import { Moons } from "./pages/Moons";
 import { DwarfPlanets } from "./pages/DwarfPlanets"
 import  ShootingStars  from "./components/ShootingStar";
 import { NotFound } from "./pages/NotFound";
+import OrientationWarning from "./components/OrientationWarning";
 
 export const App = () => {
     return (
@@ -17,6 +18,7 @@ export const App = () => {
             <BodiesProvider>
                 <NavBar></NavBar>
                 <div>
+                <OrientationWarning />  
                     <Routes>
                         <Route path="/" element={<Universe></Universe>}></Route>
                         <Route path="/planet" element={<Universe></Universe>}></Route>
