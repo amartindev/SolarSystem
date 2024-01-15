@@ -4,7 +4,6 @@ body {
     margin: 0;
     padding: 0;
     cursor: url("/src/assets/astronaut.png"), auto;
-
 }
 #root {
     height: 100%;
@@ -95,4 +94,24 @@ button:hover {
     background: linear-gradient(-45deg, white, rgba(0, 0, 255, 0));
     filter: drop-shadow(0 0 6px white);
     overflow: hidden;
+}
+.not_found {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    button {
+        width: auto;
+        margin-top: 3rem;
+    }
+
+}
+.not_found_img {
+    background-image: url("/public/assets/Sun2.jpg");
+    font-size: 20em;
+    background-position: center;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    text-align: center;
 }
